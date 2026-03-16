@@ -31,7 +31,7 @@ def main():
         # --- UI FORMATTING ---
         now_str = now.strftime("%A, %b %d")
         text_message_body = f"🚀 CANVAS DAILY BRIEFING\n📅 {now_str}\n"
-        text_message_body += "─" * 15 + "\n\n"
+        text_message_body += "─" * 13 + "\n\n"
 
         # Temporary bucket for the assignments so we can count them first
         assignments_text = ""
@@ -57,7 +57,7 @@ def main():
 
                 if is_due_soon:
                     assignment_count += 1
-                    # Your Custom Zoom Filter
+                    # Custom Zoom Filter
                     if "COP3503C" in assignment_name and "04:00 PM" in formatted_date:
                         assignments_text += f"💻 [ZOOM] {assignment_name}\n⏰ {formatted_date}\n\n"
                     else:
@@ -69,7 +69,7 @@ def main():
         else:
             text_message_body += f"🔔 You have {assignment_count} items coming up:\n\n" + assignments_text
 
-        text_message_body += "─" * 15 + "\nHave a great day, Jason!"
+        text_message_body += "─" * 13 + "\nHave a great day, Jason!"
 
         # --- 2. SENDING THE TEXT ---
         try:
