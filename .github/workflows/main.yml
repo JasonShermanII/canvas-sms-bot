@@ -2,7 +2,7 @@ name: Daily Canvas Text
 on:
   schedule:
     # Runs at 12:00 UTC (8:00 AM EDT) every day
-    - cron: '0 12 * * *'
+    - cron: '13 12 * * *'
   workflow_dispatch: 
 
 jobs:
