@@ -1,0 +1,31 @@
+name: Daily Canvas Text
+on:
+  schedule:
+    # This is "Cron" format. 12:00 UTC = 8:00 AM Florida
+    - cron: '0 12 * * *'
+  workflow_dispatch: # This lets you press a button to test it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests icalendar
+
+      - name: Run Scraper
+        env:
+          # This maps your GitHub Secrets to the Python script
+          CANVAS_URL: ${{ secrets.CANVAS_URL }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER }}
+        run: python scraper.py
